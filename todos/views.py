@@ -24,10 +24,12 @@ def todo_update(request, pk):
     """Update an existing todo"""
     todo = get_object_or_404(Todo, pk=pk)
     if request.method == 'POST':
-        todo.title = request.POST.get('title')
-        todo.description = request.POST.get('description', '')
-        todo.save()
-        return redirect('todo_list')
+        title = request.POST.get('title')
+        if title:
+            todo.title = title
+            todo.description = request.POST.get('description', '')
+            todo.save()
+            return redirect('todo_list')
     return render(request, 'todos/todo_form.html', {'todo': todo})
 
 def todo_delete(request, pk):

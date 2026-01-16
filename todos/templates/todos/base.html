@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Todo App{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'todos/css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 My Todo App</h1>
+            <nav>
+                <a href="{% url 'todo_list' %}" class="nav-link">Home</a>
+                <a href="{% url 'todo_create' %}" class="nav-link btn-primary">+ New Todo</a>
+            </nav>
+        </header>
+        
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+        
+        <footer>
+            <p>&copy; 2026 Todo App. Made with Django.</p>
+        </footer>
+    </div>
+    
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
